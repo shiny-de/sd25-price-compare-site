@@ -1,96 +1,21 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Seedance 2.5 会员档位单秒价格对比</title>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SD2.5 单秒价格 · 简版</title>
 <style>
-:root{color-scheme:light;--ink:#17202b;--muted:#667085;--line:#e5e9ef;--bg:#f5f7fa;--paper:#fff;--blue:#335cff;--teal:#12a79a;--violet:#805ad5;--soft:#eef2ff;--shadow:0 12px 32px #192b4c12}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:1380px;margin:auto;padding:34px 24px 54px}.eyebrow{color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.12em}.head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:8px 0 24px}h1{font-size:clamp(27px,4vw,40px);letter-spacing:-.04em;line-height:1.12;margin:0}.sub{color:var(--muted);margin:10px 0 0;max-width:800px}.date{font-size:12px;color:var(--muted);white-space:nowrap}.controls{display:flex;gap:14px;align-items:end;flex-wrap:wrap;background:var(--paper);padding:15px 17px;border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);margin-bottom:18px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;color:var(--muted)}select{font:inherit;color:var(--ink);background:white;border:1px solid #d6dce5;border-radius:9px;padding:9px 32px 9px 10px;min-width:140px}.switch{display:flex;gap:5px;padding:4px;background:#f0f2f6;border-radius:10px}.switch button{border:0;background:transparent;padding:8px 12px;color:#526071;border-radius:7px;font:inherit;cursor:pointer}.switch button.active{background:white;color:var(--ink);box-shadow:0 1px 4px #17202b1c}.formula{margin-left:auto;color:var(--muted);font-size:11px;max-width:340px}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}.metric{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:13px 16px}.metric label{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:21px;display:block;margin-top:2px;font-variant-numeric:tabular-nums}.metric small{color:var(--muted)}.panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}.panelhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}.panelhead h2{font-size:17px;margin:0}.panelhead small{color:var(--muted)}.callout{background:#eef2ff;color:#334776;border-radius:9px;padding:9px 11px;font-size:12px;margin:0 0 13px}.legend{display:flex;gap:12px;color:var(--muted);font-size:11px;flex-wrap:wrap}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle}.dot.bar{background:var(--blue)}.dot.ref{background:var(--violet)}.chart{margin-top:16px}.chart-head{display:grid;grid-template-columns:minmax(170px,245px) minmax(160px,1fr) 72px 102px;gap:10px;color:#8590a0;font-size:10px;padding:0 8px 6px;border-bottom:1px solid var(--line)}.product{margin-top:12px}.product-title{font-weight:700;font-size:14px;padding:6px 8px;background:#f7f8fb;border-radius:7px;display:flex;align-items:center;justify-content:space-between}.product-title small{font-size:11px;color:var(--muted);font-weight:400}.sku-row{display:grid;grid-template-columns:minmax(170px,245px) minmax(160px,1fr) 72px 102px;gap:10px;align-items:center;padding:9px 8px;border-bottom:1px solid #f0f2f5}.sku-name{font-weight:600}.sku-meta{display:block;color:var(--muted);font-size:11px;font-weight:400}.track{height:9px;background:#edf0f5;border-radius:9px;position:relative}.fill{height:100%;min-width:2px;border-radius:9px;background:var(--blue);transition:width .2s}.refline{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--violet);opacity:.8;z-index:1}.cost,.ratio{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}.cost{font-weight:700}.ratio{font-size:11px;color:var(--muted)}.no-data{padding:14px;color:var(--muted)}.table-panel{margin-top:16px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:960px;font-size:12px}th{text-align:left;color:var(--muted);font-weight:600;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:9px 8px;border-bottom:1px solid #eff1f4;vertical-align:top}tbody tr:last-child td{border-bottom:0}.num{font-variant-numeric:tabular-nums;white-space:nowrap}.badge{display:inline-block;background:#f1f4f8;color:#536174;border-radius:6px;padding:2px 6px;font-size:10px;white-space:nowrap}.muted,.notes{color:var(--muted)}.notes{margin-top:16px;font-size:11px;display:grid;gap:4px}.source{color:#8490a0}.empty{color:#929aa6}@media(max-width:860px){.formula{margin-left:0;max-width:none}.head{align-items:start;flex-direction:column;gap:9px}.date{white-space:normal}}@media(max-width:600px){.wrap{padding:22px 12px 35px}.controls{padding:12px}.summary{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}.panel{padding:14px 11px}.chart-head,.sku-row{grid-template-columns:minmax(125px,1fr) minmax(65px,.8fr) 62px 65px;gap:6px;padding-left:3px;padding-right:3px}.chart-head{font-size:9px}.sku-name{font-size:12px}.sku-meta{font-size:10px}.ratio{font-size:10px}.cost{font-size:11px}}
-</style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7f8;color:#182d35;font:15px/1.55 system-ui,sans-serif}main{max-width:1240px;margin:7vh auto;padding:0 24px}h1{font-size:clamp(24px,4vw,36px);letter-spacing:-.04em;margin:0}p{color:#526970;margin:6px 0 20px}.controls,details{margin:18px 0}.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:end}label,small{font-size:13px;color:#526970}select,input,button{font:inherit;color:inherit;border:1px solid #bdcbd0;background:white;border-radius:8px;padding:8px 11px}select{display:block;margin-top:4px}button,summary{cursor:pointer}summary{color:#12665b;font-weight:650}details label{display:block;margin:10px 0 4px}.scroll{overflow-x:auto;border:1px solid #d9e2e3;border-radius:12px;background:white}table{width:100%;min-width:780px;border-spacing:0;table-layout:fixed}th,td{text-align:center;padding:16px 5px;border-bottom:1px solid #e2e8e8}thead th{font-size:15px;background:#f0f4f4}tbody th{background:#fafbfb;font-size:14px}tr:last-child>*{border-bottom:0}td button{background:none;border:0;font-size:19px;font-weight:680;font-variant-numeric:tabular-nums;padding:5px}td.best{background:#e3f5ef}td.best button{color:#086649}.empty{color:#9ba8ac}#note{margin:10px 0}#detail{background:white;border-radius:10px;padding:16px;margin:12px 0}#detail ul{padding-left:22px;margin:8px 0}#error{color:#ae3434} </style>
+<main><h1>SD2.5 单秒价格对比</h1><p>按常规月积分可生成的 720P 有参 5 秒视频数分档，横向比较同一产量区间。</p>
+<section class="controls" aria-label="对比条件"><div class="field"><label for="period">会员周期</label><select id="period"><option value="全部" selected>全部周期</option><option value="年">年付</option><option value="季">季付</option><option value="月">月付</option></select></div><div class="field"><label for="purchase">价格阶段</label><select id="purchase"><option value="first" selected>首期价格</option><option value="renew">非首期 / 续期价格</option></select></div><div class="field"><label for="product">产品</label><select id="product"><option value="全部">全部产品</option><option>即梦</option><option>Flova</option><option>LibTV</option><option>Updream</option><option>TapNow</option><option>Oii</option></select></div><div class="field"><label for="resolution">分辨率</label><select id="resolution"><option value="720">720P（有参）</option><option value="1080">1080P（有参）</option><option value="4k">4K</option></select></div><div class="field"><label for="stage">积分阶段</label><select id="stage"><option value="early">前期/加赠积分</option><option value="later">后续常规积分</option></select></div><div class="field"><label>720P 模型折扣</label><div class="switch" role="group" aria-label="720P模型折扣"><button type="button" data-discount="on" aria-pressed="true">折扣期内</button><button type="button" data-discount="off" aria-pressed="false">折扣期外</button></div></div></section>
+<details><summary>调整产量分档</summary><label for="cuts">输入每档上限，以逗号分隔。最后一档自动包含更高产量。</label><input id="cuts" value="30, 75" size="20"><button id="apply">应用</button> <button id="reset">恢复默认</button><span id="error" role="alert"></span></details>
+<div style="background:white;border:1px solid #d9e2e3;border-radius:14px;padding:16px">
+<div id="legend" style="display:flex;gap:18px;flex-wrap:wrap;font-weight:650"></div>
+<div id="plots"></div></div>
+<div id="price-tip" role="tooltip" hidden></div>
 <style>
-.insight{margin:0 0 18px;border-color:#ccd7ff;background:linear-gradient(135deg,#fff 0%,#f4f6ff 100%)}.insight h2{font-size:17px;margin:0 0 5px}.insight>p{margin:0;color:#4c5d78;font-size:13px}.insight-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:10px;margin-top:14px}.insight-item{border:1px solid #dce3f5;border-radius:10px;background:#fff;padding:11px 12px}.insight-item strong{display:block;font-size:12px;color:#294ac7;margin-bottom:4px}.insight-item span{display:block;color:#526071;font-size:12px}@media(max-width:860px){.insight-grid{grid-template-columns:1fr}}
+.price-bar:focus-visible rect{stroke:#182d35;stroke-width:2}
+#price-tip{position:fixed;inset:auto;z-index:10;pointer-events:none;max-width:calc(100vw - 16px);padding:10px 14px;border-radius:8px;background:#182d35;color:#fff;white-space:pre-line;font-size:14px;line-height:1.5;box-shadow:0 4px 18px #182d3540}
+.switch{display:flex;gap:4px;margin-top:4px}.switch [aria-pressed="true"]{background:#e4f3ef;border-color:#238477;color:#125e53}
+.plot-scroll{overflow:auto}.plot-scroll svg{display:block;width:100%}#plots h2{font-size:17px;margin:20px 0 0}
 </style>
-<style>
-.compare-panel{margin-top:16px}.compare-intro{color:var(--muted);font-size:12px;margin:-4px 0 14px}.compare-scroll{overflow-x:auto;padding-bottom:4px}.compare-block{border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;margin-top:12px;background:linear-gradient(180deg,#fff,#fbfcfe)}.compare-block h3{font-size:15px;margin:0}.compare-block small{color:var(--muted)}.compare-svg{display:block;width:100%;min-width:760px;height:auto;margin-top:8px}.compare-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;color:var(--muted);font-size:11px}.compare-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}.compare-note{font-size:11px;color:var(--muted);margin-top:8px}.compare-axis{fill:#8993a3;font-size:11px}.compare-grid{stroke:#e8ecf2;stroke-width:1}.compare-ref{stroke:#805ad5;stroke-width:1.5;stroke-dasharray:5 5}.compare-ref-label{fill:#805ad5;font-size:10px}.compare-line{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.compare-dot{stroke:#fff;stroke-width:2}
-</style>
-<style>
-.compare-bar-panel{margin-top:16px}.compare-bar-scroll{overflow-x:auto;padding-bottom:4px}.compare-bar-svg{display:block;width:100%;min-width:920px;height:auto}.compare-bar{opacity:.92}.compare-bar:hover{opacity:1;stroke:#17202b;stroke-width:1}.compare-bar-label{fill:#8993a3;font-size:11px}.compare-bar-grid{stroke:#e8ecf2;stroke-width:1}.compare-bar-ref{stroke:#805ad5;stroke-width:1.5;stroke-dasharray:5 5}.compare-bar-ref-label{fill:#805ad5;font-size:10px}.compare-bar-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:5px;color:var(--muted);font-size:11px}.compare-bar-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}.compare-bar-note{font-size:11px;color:var(--muted);margin-top:8px}
-</style>
-<style>
-.view-toggle{display:inline-flex;gap:4px;margin-left:auto}.view-toggle button{border:1px solid #d6dce5;background:#fff;color:#536174;border-radius:7px;padding:4px 8px;font:inherit;font-size:11px;cursor:pointer}.view-toggle button:hover{border-color:#335cff;color:#335cff}.view-toggle button.active{background:#eef2ff;border-color:#335cff;color:#335cff}
-</style>
-<style>
-.tier-guide{margin-bottom:18px}.tier-guide h2{margin:0}.tier-guide p{color:var(--muted);margin:6px 0}.tier-guide .tablewrap{margin-top:12px;overflow:auto}.tier-guide td,.tier-guide th{text-align:left;vertical-align:top}.tier-guide td div+div{margin-top:6px}.tier-guide td small{display:block;color:var(--muted)}
-</style>
-<style>
-.tier-rule{margin:0 0 18px;padding:18px 22px;border:1px solid #bbdcd7;border-left:4px solid #237b73;border-radius:12px;background:#edf7f5;color:#204c48}
-.tier-rule h2{margin:0 0 5px;font-size:17px}.tier-rule p{margin:0}.tier-rule a{color:#155e57;text-underline-offset:3px;white-space:nowrap}
-</style>
-<style>
-.compare-module{background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(12px,2vw,24px)}
-.compare-module>.controls,.compare-module>.panel{position:static;margin:0;padding:0;border:0;box-shadow:none;background:transparent}
-.compare-module>.summary{margin:18px 0;padding:16px 0;border-block:1px solid var(--line)}
-.compare-module .metric{box-shadow:none;background:#f6f8fc;border:0}
-#chart .compare-axis,#chart .compare-bar-label{font-size:15px;font-weight:600;fill:#42516a}
-#chart svg{min-width:1000px}
-#chart svg text,#chart [data-unit-cost]{cursor:help}
-#chart-tip{position:fixed;z-index:1000;pointer-events:none;max-width:min(360px,90vw);padding:9px 13px;border-radius:8px;background:#182438;color:white;white-space:pre-line;font-size:13px;box-shadow:0 4px 16px #15244030}
-</style>
-</head>
-<body><main class="wrap">
-<div class="eyebrow">MODEL ECONOMICS · SD 2.5</div>
-<header class="head"><div><h1>Seedance 2.5 会员档位单秒价格</h1><p class="sub">按产品、会员档位和订阅周期展开；可切换首期与续期实付价、分辨率、积分阶段及模型折扣，对比各SKU单秒成本。</p></div><div class="date">币种：人民币 · 会员价格按席位 / 个人账号</div></header>
-<section class="tier-rule" aria-labelledby="tier-rule-heading">
-<h2 id="tier-rule-heading">档位划分逻辑</h2>
-<p>按常规月积分可生成的 SD2.5 720P 有参 5 秒视频数分档：入门 1–10 条、基础 11–30 条、进阶 31–100 条、高级 101–300 条、旗舰 301 条起。<a href="#appendix" id="mapping-link">对应表详见附录</a></p>
-</section>
-<section class="panel insight" aria-labelledby="pricing-insight-title">
-<h2 id="pricing-insight-title">常态价接近刊例，前期折扣与加赠降单秒价，续期与周期组合平衡整体利润</h2>
-<div class="insight-grid">
-<div class="insight-item"><strong>常态价：年付约为刊例的 0.5–1.1 倍，季付约 0.7–1.3 倍，月付约 0.7–2.0 倍。</strong><span>按无首期优惠、无赠分、无赠送时长、模型折扣期外的价格计算。月付档位之间的价差最大，部分套餐生成同样 1 秒视频，花费可达火山刊例的 2 倍。</span></div>
-<div class="insight-item"><strong>活动价：部分 720P 套餐可降至刊例的 0.2–0.6 倍。</strong><span>限时模型折扣使每次生成只消耗常规用量五到六成的积分。首购若再叠加赠分或赠送会员时长，同一笔实付金额能生成更多视频，单秒价还会进一步降低。</span></div>
-<div class="insight-item"><strong>策略推测：首期让利可能靠续期弥补，年付让利可能靠月付、季付补贴。</strong><span>首期结束后，续费价格回升或赠分减少，都可能提高平台每积分的收入。结合不同订阅周期的利润，平台有机会平衡前期促销的让利。</span></div>
-</div>
-</section>
-<div class="compare-module">
-<div class="panelhead"><h2>同周期不同等级单秒价格</h2></div>
-<section class="controls" aria-label="对比条件"><div class="field"><label for="period">会员周期</label><select id="period"><option value="全部" selected>全部周期</option><option value="年">年付</option><option value="季">季付</option><option value="月">月付</option></select></div><div class="field"><label for="purchase">价格阶段</label><select id="purchase"><option value="first" selected>首期价格</option><option value="renew">非首期 / 续期价格</option></select></div><div class="field"><label for="product">产品</label><select id="product"><option value="全部">全部产品</option><option>即梦</option><option>Flova</option><option>LibTV</option><option>Updream</option><option>TapNow</option><option>Oii</option></select></div><div class="field"><label for="resolution">分辨率</label><select id="resolution"><option value="720">720P（有参）</option><option value="1080">1080P（有参）</option><option value="4k">4K</option></select></div><div class="field"><label for="stage">积分阶段</label><select id="stage"><option value="early">前期/加赠积分</option><option value="later">后续常规积分</option></select></div><div class="field"><label>720P 模型折扣</label><div class="switch" role="group" aria-label="720P模型折扣"><button type="button" data-discount="on" class="active">折扣期内</button><button type="button" data-discount="off">折扣期外</button></div></div><div class="formula">首期 / 续期实付价 ÷ 对应计价月数 ÷ 月积分 × 模型积分/秒 × 模型折扣</div></section>
-<section class="summary" aria-live="polite"><div class="metric"><label>火山刊例单秒价</label><strong id="reference">¥1.510</strong><small id="referenceLabel">Seedance 2.5 · 720P</small></div><div class="metric"><label>当前筛选最低价</label><strong id="bestPrice">—</strong><small id="bestLabel">—</small></div><div class="metric"><label>最低价相对刊例</label><strong id="bestRatio">—</strong><small>单秒价 ÷ 火山刊例价</small></div></section>
-<section class="panel" aria-label="各会员SKU单秒价格图表"><div class="panelhead"><div class="legend"><span><i class="dot bar"></i>单秒价</span><span><i class="dot ref"></i>火山刊例</span></div></div><p id="discountNote" class="callout"></p><div class="chart-head"><span>产品 / SKU档位</span><span>单秒价 · 刻度条</span><span style="text-align:right">单秒价</span><span style="text-align:right">相对刊例</span></div><div id="chart"></div></section>
-</div>
-<div id="chart-tip" role="tooltip" hidden></div>
-<footer class="notes"><div>2026-11-24 已核对 Updream 官网个人会员连续包月标价：Pro ¥159、Max ¥499、Ultra ¥999。套餐卡未单列后续扣款金额，续期按同价估算。</div><div>已补齐即梦月付、季付的全部会员档位和可选积分档；TapNow补齐月付、季付、年付全部可选积分档。Updream购买页目前展示月付与年付，未见季付；Flova、LibTV、Oii已录入周期与价格保持不变。</div><div>即梦各周期SKU均补入购买页续费价；LibTV补入可直接核实的续期价。续期价未单独披露的SKU按首期实付价处理；明确标注一次性付费的SKU不计算续期价。</div><div>Updream购买页显示首购填写邀请码可一次性赠分，已计入首月积分：月付 Pro/Max/Ultra 分别为20,800/67,800/137,400积分；年付分别为31,800/112,800/227,400积分。年付另赠1个月会员，按13个月计价。</div><div>TapNow价格按登录后的 CNY 购买页当前选项记录；月付采用页面显示的活动月价，季付采用页面显示的季付总价。TapNow 价格与档位滑块绑定，不同积分档分别按页面选择核对。即梦年付高档含赠送会员月；会员积分加赠按页面标出的积分阶段计入。</div><div>赠送会员时长计入首期“计价月数”；续期按正常合同周期计价，积分采用后续常规月积分。首期的积分加赠可用“前期/加赠积分、后续常规积分”切换。Oii 月积分含每日签到积分，沿用月总积分口径。</div><div>火山刊例：720P ¥1.51/秒、1080P ¥3.74/秒、4K ¥6.03/秒。模型消耗：即梦 20/64/99；Flova 23/96/162；LibTV 46/110/180；Updream 有参 330/720；TapNow 40/100；Oii 20/52/130（积分/秒）。未披露的分辨率不推算。</div><div>720P活动系数沿用各产品、周期的已采集口径：即梦 5折参考（至2026-11-23）；Flova 6折（年付最长365天、季付30天）；LibTV 5折（年付14天）。部分产品的活动资格和不同档位折扣有差异，卡片显示的单秒价按当前所选活动系数估算；折扣期外切换为原价消耗。</div><div class="source">约合月价 = 当前口径实付金额 ÷ 当前计价月数；首期含已知赠送会员时长，续期不含赠送时长。未披露的续期价按首期价处理。单秒价展示三位小数。Updream未展示的季付SKU不推算。</div></footer>
-<section id="appendix" tabindex="-1" aria-label="附录" style="scroll-margin-top:16px">
-<div class="panelhead"><h2>附录</h2><div class="switch" role="group" aria-label="附录视图"><button type="button" class="active" aria-pressed="true" aria-controls="mapping-panel">档位对应表</button><button type="button" aria-pressed="false" aria-controls="pricing-panel">价格与积分明细</button></div></div>
-<section id="mapping-panel" class="panel tier-guide" aria-labelledby="tier-title">
-<h2 id="tier-title">产量档位与会员套餐对应表</h2>
-<p>以 Seedance 2.5、720P、有参、5 秒为一条视频。常规月积分除以生成一条视频的原价积分，向下取整。计算时剔除活动赠分和模型折扣。Updream 按 5 秒参考视频计算。</p>
-<p>同一产品在同一主档内有多个套餐时，按月产量递增编号，如「高级1档」「高级2档」。各周期月产量相同的套餐合并展示。</p>
-<div class="tablewrap"><table><thead><tr><th>产品</th><th>入门<br>1–10 条/月</th><th>基础<br>11–30 条/月</th><th>进阶<br>31–100 条/月</th><th>高级<br>101–300 条/月</th><th>旗舰<br>301 条/月及以上</th></tr></thead><tbody id="tier-map"></tbody></table></div>
-</section>
-<section id="pricing-panel" hidden class="panel table-panel"><div class="panelhead"><h2>价格与积分明细</h2><small id="detailSubtitle"></small></div><div class="tablewrap"><table><thead><tr><th>产品</th><th>周期</th><th>会员档位</th><th>首期实付</th><th>续期实付</th><th>当前口径实付</th><th>计价月数</th><th>约合月价</th><th>积分/月</th><th>模型积分/秒</th><th>折扣/口径</th><th>单秒价格</th><th>对刊例</th></tr></thead><tbody id="detailRows"></tbody></table></div></section>
-</section>
-</main>
-<script>
-const appendix = document.getElementById('appendix');
-const appendixButtons = appendix.querySelectorAll('button[aria-controls]');
-function showAppendix(id) {
-  for (const button of appendixButtons) {
-    const selected = button.getAttribute('aria-controls') === id;
-    button.setAttribute('aria-pressed', String(selected));
-    button.classList.toggle('active', selected);
-    document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
-  }
-}
-for (const button of appendixButtons) {
-  button.onclick = () => showAppendix(button.getAttribute('aria-controls'));
-}
-document.getElementById('mapping-link').onclick = () => {
-  showAppendix('mapping-panel');
-  appendix.focus({preventScroll:true});
-  appendix.scrollIntoView({block:'start'});
-};
-</script>
-<script>
+<p><small>单位：元/秒。每根柱显示该竞品在此档的最低单秒价，紫色虚线为火山刊例。点击柱体可查看同档全部套餐。</small></p><small id="basis"></small><section id="detail" hidden aria-live="polite"></section></main><script>
 const brands=[
 {name:'即梦',rate:{720:20,1080:64,'4k':99},off:{年:.5,季:.5,月:.5},campaign:'720P活动价（至 2026-11-23；各会员档活动折扣略有差异）',plans:[['月','基础会员 / 725',33,1,1,725,725],['月','标准会员 / 2.21K',100,1,1,2210,2210],['月','高级会员 / 6.16K',199,1,1,6160,6160],['月','高级会员 / 12.32K',398,1,1,12320,12320],['月','高级会员 / 18.48K',597,1,1,18480,18480],['月','高级会员 / 27.72K',896,1,1,27720,27720],['月','超级会员 / 54.6K',1706,1,1,54600,54600],['季','基础会员 / 725',113,3,3,725,725],['季','标准会员 / 2.21K',341,3,3,2210,2210],['季','高级会员 / 6.16K',658,3,3,6160,6160],['季','高级会员 / 12.32K',1227,3,3,12320,12320],['季','高级会员 / 18.48K',1799,3,3,18480,18480],['季','高级会员 / 27.72K',2680,3,3,27720,27720],['季','超级会员 / 54.6K',4999,3,3,54600,54600],['年','基础会员 / 725',393,12,12,725,725],['年','标准会员 / 2.21K',1099,12,12,2210,2210],['年','高级会员 / 6.16K',2599,12,12,7410,6160],['年','高级会员 / 12.32K',5199,12,12,16520,12320],['年','高级会员 / 18.48K',7019,12,12,27560,19430],['年','高级会员 / 27.72K',10529,12,12,46220,31320],['年','超级会员 / 54.6K',19656,12,15,103600,60400]]},
 {name:'Flova',rate:{720:23,1080:96,'4k':162},off:{年:.6,季:.6},campaign:'720P 6折（年付365天 / 季付30天）',plans:[
@@ -115,107 +40,126 @@ const renewals={
 'LibTV|月|Starter / 1.5K':66,'LibTV|月|Plus / 4.6K':199,'LibTV|月|Ultra / 16.3K':669,'LibTV|月|Pro / 32.8K':1299,'LibTV|月|至尊 / 92K':3569,
 'LibTV|年|Starter / 1.5K':599,'LibTV|年|Plus / 4.6K':1799,'LibTV|年|Ultra / 16.3K':5099,'LibTV|年|Pro / 32.8K':7399,'LibTV|年|至尊 / 92K':'一次性付费，无续期'
 };
-const official={720:1.51,1080:3.74,'4k':6.03},resLabel={720:'720P（有参）',1080:'1080P（有参）','4k':'4K'},state={period:'全部',product:'全部',res:'720',stage:'early',discount:'on',purchase:'first'};
-const yuan=n=>'¥'+Number(n).toLocaleString('zh-CN',{maximumFractionDigits:2}),price=n=>'¥'+Number(n).toFixed(3),periodName={年:'年付',季:'季付',月:'月付'};
-const pay=n=>Number.isFinite(n)?yuan(n):'未披露';
-function rowData(b,sku){const [cycle,tier,firstPaid,baseMonths,firstMonths,early,later]=sku;if(state.period!=='全部'&&state.period!==cycle)return null;if(state.product!=='全部'&&state.product!==b.name)return null;const listedRenewal=renewals[`${b.name}|${cycle}|${tier}`],renewal=listedRenewal===undefined?firstPaid:listedRenewal,isRenew=state.purchase==='renew',hasRenew=typeof renewal==='number',paid=isRenew?(hasRenew?renewal:null):firstPaid,months=isRenew?baseMonths:firstMonths,points=isRenew?later:(state.stage==='early'?early:later),rate=b.rate[state.res],disc=state.res==='720'&&state.discount==='on'?(b.off[cycle]||1):1,monthly=Number.isFinite(paid)?paid/months:null,cost=(!isRenew||hasRenew)&&rate!=null?monthly/points*rate*disc:null;return{brand:b,cycle,tier,firstPaid,renewal,paid,baseMonths,months,firstMonths,early,later,points,rate,disc,monthly,cost,isRenew,hasRenew,oneTime:renewal==='一次性付费，无续期',renewalAssumed:listedRenewal===undefined}}
-function fold(x){const r=x/official[state.res];return r<=1?(r*10).toFixed(2)+'折':r.toFixed(2)+'倍刊例'}
-function render(){const res=state.res,rows=[];brands.forEach(b=>b.plans.forEach(s=>{const r=rowData(b,s);if(r)rows.push(r)}));const active=rows.filter(r=>Number.isFinite(r.cost));active.sort((a,b)=>a.cost-b.cost);document.getElementById('reference').textContent=price(official[res]);document.getElementById('referenceLabel').textContent='Seedance 2.5 · '+resLabel[res];const best=active[0];document.getElementById('bestPrice').textContent=best?price(best.cost):'—';document.getElementById('bestLabel').textContent=best?`${best.brand.name} · ${periodName[best.cycle]} ${best.tier}`:'当前筛选无可计算SKU';document.getElementById('bestRatio').textContent=best?fold(best.cost):'—';document.getElementById('detailSubtitle').textContent=`${state.period==='全部'?'全部周期':periodName[state.period]} · ${state.purchase==='first'?'首期价格':'非首期/续期价格'} · ${resLabel[res]} · ${state.purchase==='renew'?'常规积分阶段':state.stage==='early'?'加赠积分阶段':'常规积分阶段'}`;
-const scope=state.product==='全部'?brands:brands.filter(b=>b.name===state.product),max=Math.max(...active.map(r=>r.cost),official[res]);const chart=document.getElementById('chart');chart.innerHTML='';scope.forEach(b=>{const bRows=rows.filter(r=>r.brand===b);if(!bRows.length)return;const section=document.createElement('div');section.className='product';const title=document.createElement('div');title.className='product-title';title.innerHTML=`<span>${b.name}</span><small>${bRows.length} 个套餐 SKU</small>`;section.appendChild(title);bRows.forEach(r=>{const el=document.createElement('div');el.className='sku-row';if(!Number.isFinite(r.cost)){const reason=r.oneTime?'一次性付费，无续期':r.isRenew&&!r.hasRenew?'续期价格未披露':'此分辨率的模型积分消耗未收录';el.innerHTML=`<div>${periodName[r.cycle]} · ${r.tier}<span class="sku-meta">${state.purchase==='renew'?'续期':'首期'} ${pay(r.paid)} · ${r.points.toLocaleString()} 积分/月</span></div><div class="empty">${reason}</div><div class="cost">—</div><div class="ratio">—</div>`}else{const width=Math.min(100,Math.max(1,r.cost/max*100)),refX=Math.min(100,official[res]/max*100),camp=state.res==='720'?(r.disc<1?`${Math.round(r.disc*100)}折`:r.brand.off[r.cycle]?'折扣期外/原价':'无本周期折扣'):'原价';el.innerHTML=`<div class="sku-name">${periodName[r.cycle]} · ${r.tier}<span class="sku-meta">${state.purchase==='renew'?'续期':'首期'}实付 ${yuan(r.paid)} · 约 ${r.months} 月 · ${r.points.toLocaleString()} 积分/月</span></div><div class="track"><div class="refline" style="left:${refX}%"></div><div class="fill" style="width:${width}%"></div></div><div class="cost">${price(r.cost)}</div><div class="ratio">${fold(r.cost)}<span class="sku-meta">${camp}</span></div>`}section.appendChild(el)});chart.appendChild(section)});
-const body=document.getElementById('detailRows');body.innerHTML='';rows.forEach(r=>{const tr=document.createElement('tr');const renewText=typeof r.renewal==='number'?yuan(r.renewal):typeof r.renewal==='string'?r.renewal:'未披露';if(!Number.isFinite(r.cost)){const reason=r.oneTime?'此SKU为一次性付费，无续期单秒价':r.isRenew&&!r.hasRenew?'该SKU续期实付价未披露，暂不可计算单秒价':'所选分辨率未收录模型积分/秒，暂不可计算';tr.innerHTML=`<td>${r.brand.name}</td><td>${periodName[r.cycle]}</td><td>${r.tier}</td><td class="num">${yuan(r.firstPaid)}</td><td class="num">${renewText}</td><td class="num">${pay(r.paid)}</td><td colspan="7" class="muted">${reason}</td>`;body.appendChild(tr);return}const ctext=state.purchase==='renew'?`${r.points.toLocaleString()}（续期常规）`:state.stage==='early'&&r.early!==r.later?`${r.early.toLocaleString()}（${r.brand.name==='Updream'?'首月含邀请码一次性赠分':'首期/前3月'}）`:`${r.points.toLocaleString()}`;const factor=r.disc<1?`${Math.round(r.disc*100)}折`:r.brand.off[r.cycle]?'原价（折扣期外）':'无本周期折扣';tr.innerHTML=`<td>${r.brand.name}</td><td>${periodName[r.cycle]}</td><td>${r.tier}</td><td class="num">${yuan(r.firstPaid)}</td><td class="num">${renewText}</td><td class="num">${yuan(r.paid)}</td><td class="num">${r.months}${r.months>r.baseMonths?`（含赠${r.months-r.baseMonths}月）`:''}</td><td class="num">${yuan(r.monthly)}</td><td class="num">${ctext}</td><td class="num">${r.rate}</td><td><span class="badge">${factor}</span></td><td class="num"><strong>${price(r.cost)}</strong></td><td class="num">${fold(r.cost)}</td>`;body.appendChild(tr)});document.getElementById('discountNote').textContent=`${resLabel[res]} · 紫色标线为火山刊例 ${price(official[res])}/秒。当前口径：${state.purchase==='first'?'首期实付价': '续期实付价；续期积分按常规月积分'}。${res==='720'?`折扣设置：${state.discount==='on'?'活动折扣期内':'折扣期外'}`:'此分辨率按原积分消耗计价'}；未披露续期价按首期价处理。`}
-document.getElementById('period').addEventListener('change',e=>{state.period=e.target.value;render()});document.getElementById('purchase').addEventListener('change',e=>{state.purchase=e.target.value;render()});document.getElementById('product').addEventListener('change',e=>{state.product=e.target.value;render()});document.getElementById('resolution').addEventListener('change',e=>{state.res=e.target.value;render()});document.getElementById('stage').addEventListener('change',e=>{state.stage=e.target.value;render()});document.querySelectorAll('[data-discount]').forEach(b=>b.addEventListener('click',()=>{state.discount=b.dataset.discount;document.querySelectorAll('[data-discount]').forEach(x=>x.classList.toggle('active',x===b));render()}));render();
-</script>
-<script>
-const chartForSort=document.getElementById('chart');let sortingProducts=false;function productLowestPrice(section){const prices=[...section.querySelectorAll('.cost')].map(el=>el.textContent.trim()).filter(text=>text.startsWith('¥')).map(text=>Number(text.replace(/[^0-9.]/g,''))).filter(Number.isFinite);return prices.length?Math.min(...prices):Infinity}function sortProductsByPrice(){if(sortingProducts)return;const sections=[...chartForSort.querySelectorAll('.product')],sorted=[...sections].sort((a,b)=>productLowestPrice(a)-productLowestPrice(b));if(sorted.some((section,index)=>section!==sections[index])){sortingProducts=true;sorted.forEach(section=>chartForSort.appendChild(section));sortingProducts=false}}new MutationObserver(()=>requestAnimationFrame(sortProductsByPrice)).observe(chartForSort,{childList:true});sortProductsByPrice();
-</script>
-<script>
-const brandColors = { '即梦': '#335cff', Flova: '#12a79a', LibTV: '#ef8a3a', Updream: '#805ad5', TapNow: '#64748b', Oii: '#e34d8c' };
-function outputGroups(rows, period, includeMapping = false) {
-  const levels = ['入门', '基础', '进阶', '高级', '旗舰'];
-  const groups = brands.map(brand => {
-    const buckets = levels.map(() => []);
-    for (const row of rows.filter(item => item.brand === brand)) {
-      const plan = brand.plans.find(plan => plan[0] === period && plan[1] === row.tier);
-      const quota = brand.name === '即梦' ? Number(row.tier.split('/')[1].trim().replace('K','')) * (row.tier.endsWith('K') ? 1000 : 1) : plan[6];
-      const count = Math.floor(Math.round(quota) / (5 * brand.rate[720]));
-      const level = [10, 30, 100, 300, Infinity].findIndex(max => count <= max);
-      buckets[level].push({row, count});
-    }
-    buckets.forEach(bucket => bucket.sort((a,b) => a.count - b.count));
-    return {brand, buckets};
-  });
-  if (includeMapping) return groups;
-  const slots = levels.flatMap((name, level) => {
-    const size = Math.max(...groups.map(group => group.buckets[level].length));
-    return Array.from({length:size}, (_, index) => ({level, index, label:size === 1 ? name : name + (index + 1) + '档'}));
-  });
-  const series = groups.map(({brand, buckets}) => ({
-    brand,
-    values: slots.map(({level,index}) => buckets[level][index]?.row.cost ?? null),
-    names: slots.map(({level,index}) => {
-      const entry = buckets[level][index];
-      if (!entry) return '';
-      const name = levels[level] + (buckets[level].length > 1 ? (index + 1) + '档' : '');
-      return name + ' · ' + entry.row.tier + ' · ' + entry.count + '条/月';
-    })
-  })).filter(s => s.values.some(Number.isFinite)).sort((a,b) => Math.min(...a.values.filter(Number.isFinite)) - Math.min(...b.values.filter(Number.isFinite)));
-  return {tiers:slots.map(slot => slot.label), series};
+
+const $=id=>document.getElementById(id);
+const palette=['#335cff','#12a79a','#dd8238','#805ad5','#64748b','#e34d8c'];
+let bounds=[30,75];
+const tierNames=['轻量创作','进阶创作','高频创作'];
+function quota(b,s){if(b.name!=='即梦')return s[6];const token=s[1].split('/')[1].trim();return Math.round(parseFloat(token)*(token.endsWith('K')?1000:1))}
+function quote(b,s){
+ const [cycle,tier,first,months,actual,early,later]=s,base=quota(b,s);
+ const renewal=renewals[[b.name,cycle,tier].join('|')]??first;
+ const isRenew=$('purchase').value==='renew';
+ const resolution=$('resolution').value,rate=b.rate[resolution];
+ if(!rate || (isRenew && typeof renewal!=='number'))return null;
+ const paid=isRenew?renewal:first,term=isRenew?months:actual;
+ const points=isRenew||$('stage').value==='later'?later:early;
+ const factor=resolution==='720'&&modelDiscount==='on'?b.off[cycle]||1:1;
+ return {tier,qty:Math.floor(base/(5*b.rate[720])),cost:paid/term/points*rate*factor};
 }
-function renderTierMap() {
-  const rows = brands.flatMap(brand => brand.plans.filter(plan => plan[0] === '月').map(plan => ({brand, tier:plan[1]})));
-  const names = ['入门','基础','进阶','高级','旗舰'];
-  for (const {brand,buckets} of outputGroups(rows, '月', true)) {
-    const tr = document.getElementById('tier-map').insertRow();
-    tr.insertCell().textContent = brand.name;
-    buckets.forEach((entries, level) => {
-      const cell = tr.insertCell();
-      if (!entries.length) cell.textContent = '—';
-      entries.forEach(({row,count}, index) => {
-        const item = document.createElement('div');
-        item.textContent = names[level] + (entries.length > 1 ? (index+1)+'档' : '') + ' · ' + count + ' 条/月';
-        const original = document.createElement('small');
-        original.textContent = row.tier;
-        item.append(original);
-        cell.append(item);
-      });
-    });
-  }
+function detail(name,label,rows){
+ const panel=$('detail');panel.hidden=false;panel.replaceChildren();
+ const title=document.createElement('b');title.textContent=name+' · '+label;panel.append(title);
+ const list=document.createElement('ul');for(const r of rows){const li=document.createElement('li');li.textContent=r.tier+'　'+r.qty+' 条/月　¥'+r.cost.toFixed(3)+'/秒';list.append(li)}panel.append(list);
 }
-renderTierMap();
-(()=>{const chart=document.getElementById('chart'),panel=chart?.closest('.panel');if(!chart||!panel)return;const heading=panel.querySelector('.panelhead h2');if(heading)heading.textContent='同周期不同等级单秒价格';const intro=document.createElement('p');intro.className='compare-intro';intro.textContent='按常规月积分可生成的 720P 有参 5 秒视频数分档。同一产品同档有多个套餐时，按产量从低到高编号。';chart.className='compare-panel';chart.insertAdjacentElement('beforebegin',intro);const periods=['年','季','月'],esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function collect(period){const prev=state.period;state.period=period;const rows=[];brands.forEach(b=>b.plans.forEach(s=>{const r=rowData(b,s);if(r)rows.push(r)}));state.period=prev;return rows}function pathFor(values,xs,y){let d='',open=false;values.forEach((v,i)=>{if(Number.isFinite(v)){d+=(open?'L':'M')+xs[i].toFixed(1)+' '+y(v).toFixed(1);open=true}else open=false});return d}function block(period){const rows=collect(period),{tiers,series}=outputGroups(rows,period);const vals=series.flatMap(s=>s.values).filter(Number.isFinite),max=Math.max(...vals,official[state.res],0.01),w=960,h=360,left=64,right=24,top=24,bottom=56,pw=w-left-right,ph=h-top-bottom,xs=tiers.map((_,i)=>tiers.length===1?left+pw/2:left+i*pw/(tiers.length-1)),y=v=>top+ph-(v/max)*ph,grid=[0,.25,.5,.75,1],refY=y(official[state.res]);let svg=`<svg class="compare-svg" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(periodName[period])}不同等级单秒价格折线图">`;grid.forEach(g=>{const yy=top+ph-g*ph;svg+=`<line class="compare-grid" x1="${left}" x2="${w-right}" y1="${yy}" y2="${yy}"/><text class="compare-axis" x="${left-10}" y="${yy+4}" text-anchor="end">${price(max*g)}</text>`});svg+=`<line class="compare-ref" x1="${left}" x2="${w-right}" y1="${refY}" y2="${refY}"/><text class="compare-ref-label" x="${w-right}" y="${Math.max(14,refY-6)}" text-anchor="end">火山刊例 ${price(official[state.res])}</text>`;tiers.forEach((t,i)=>{svg+=`<text class="compare-axis" x="${xs[i]}" y="${h-24}" text-anchor="middle">${esc(t)}</text><line class="compare-grid" x1="${xs[i]}" x2="${xs[i]}" y1="${top}" y2="${top+ph}"/>`});series.forEach((s,si)=>{const color=brandColors[s.brand.name],d=pathFor(s.values,xs,y);svg+=`<path class="compare-line" stroke="${color}" d="${d}"/>`;s.values.forEach((v,i)=>{if(Number.isFinite(v))svg+=`<circle class="compare-dot" fill="${color}" cx="${xs[i]}" cy="${y(v)}" r="4"><title>${esc(s.brand.name)} · ${esc(periodName[period])} · ${esc(tiers[i])}（${esc(s.names[i])}）：${price(v)}/秒</title></circle>`})});svg+='</svg>';const legend=series.map((s,i)=>`<span><i style="background:${brandColors[s.brand.name]}"></i>${esc(s.brand.name)}（最低 ${price(Math.min(...s.values.filter(Number.isFinite)))}）</span>`).join('');return `<section class="compare-block"><div class="panelhead"><h3>${periodName[period]}</h3><small>${series.length} 个产品 · ${tiers.length} 个等级</small></div><div class="compare-scroll">${svg}</div><div class="compare-legend">${legend||'<span>当前筛选无可计算数据</span>'}</div><div class="compare-note">当前筛选：${state.purchase==='first'?'首期':'续期'} · ${resLabel[state.res]} · ${state.res==='720'?(state.discount==='on'?'折扣期内':'折扣期外'):'原价'} · ${state.stage==='early'?'前期/加赠积分':'后续常规积分'}</div></section>`}function renderCompare(){chart.innerHTML=periods.filter(p=>state.period==='全部'||state.period===p).map(block).join('');if(!chart.innerHTML)chart.innerHTML='<div class="no-data">当前筛选无可计算数据</div>'}['period','purchase','product','resolution','stage'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>requestAnimationFrame(renderCompare)));document.querySelectorAll('[data-discount]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(renderCompare)));renderCompare()})();
-</script>
-<script>
-(()=>{const chart=document.getElementById('chart'),panel=chart?.closest('.panel');if(!chart||!panel)return;const heading=panel.querySelector('.panelhead h2');if(heading)heading.textContent='同周期不同等级单秒价格';const oldHead=panel.querySelector('.chart-head');if(oldHead)oldHead.style.display='none';const intro=panel.querySelector('.compare-intro');if(intro){intro.textContent='按常规月积分可生成的 720P 有参 5 秒视频数分档。同一产品同档有多个套餐时，按产量从低到高编号。'}else{const p=document.createElement('p');p.className='compare-intro';p.textContent='按常规月积分可生成的 720P 有参 5 秒视频数分档。同一产品同档有多个套餐时，按产量从低到高编号。';chart.insertAdjacentElement('beforebegin',p)}chart.className='compare-bar-panel';const periods=['年','季','月'],esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function collect(period){const prev=state.period;state.period=period;const rows=[];brands.forEach(b=>b.plans.forEach(s=>{const r=rowData(b,s);if(r)rows.push(r)}));state.period=prev;return rows}function block(period){const rows=collect(period),{tiers,series}=outputGroups(rows,period);const vals=series.flatMap(s=>s.values).filter(Number.isFinite),max=Math.max(...vals,official[state.res],0.01),w=Math.max(960,tiers.length*150+120),h=390,left=64,right=28,top=28,bottom=70,pw=w-left-right,ph=h-top-bottom,groupW=tiers.length?pw/tiers.length:pw,active=series.length,barW=Math.min(30,Math.max(12,(groupW-24)/Math.max(active,1))),clusterW=barW*active,gap=(groupW-clusterW)/2,y=v=>top+ph-(v/max)*ph,grid=[0,.25,.5,.75,1],refY=y(official[state.res]);let svg='<svg class="compare-bar-svg" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(periodName[period])+'不同等级单秒价格分组柱状图">';grid.forEach(g=>{const yy=top+ph-g*ph;svg+='<line class="compare-bar-grid" x1="'+left+'" x2="'+(w-right)+'" y1="'+yy+'" y2="'+yy+'"/><text class="compare-bar-label" x="'+(left-10)+'" y="'+(yy+4)+'" text-anchor="end">'+price(max*g)+'</text>'});svg+='<line class="compare-bar-ref" x1="'+left+'" x2="'+(w-right)+'" y1="'+refY+'" y2="'+refY+'"/><text class="compare-bar-ref-label" x="'+(w-right)+'" y="'+Math.max(14,refY-6)+'" text-anchor="end">火山刊例 '+price(official[state.res])+'</text>';tiers.forEach((t,ti)=>{const gx=left+ti*groupW;svg+='<line class="compare-bar-grid" x1="'+gx+'" x2="'+gx+'" y1="'+top+'" y2="'+(top+ph)+'"/><text class="compare-bar-label" x="'+(gx+groupW/2)+'" y="'+(h-32)+'" text-anchor="middle">'+esc(t)+'</text>'});series.forEach((s,si)=>{s.values.forEach((v,ti)=>{if(!Number.isFinite(v))return;const x=left+ti*groupW+gap+si*barW,yy=y(v),bh=top+ph-yy;svg+='<rect data-unit-cost="'+v+'" class="compare-bar" fill="'+brandColors[s.brand.name]+'" x="'+x.toFixed(1)+'" y="'+yy.toFixed(1)+'" width="'+Math.max(8,barW-3).toFixed(1)+'" height="'+Math.max(1,bh).toFixed(1)+'" rx="3"><title>'+esc(s.brand.name)+' · '+esc(periodName[period])+' · '+esc(tiers[ti])+'（'+esc(s.names[ti])+'）：'+price(v)+'/秒</title></rect>'})});svg+='</svg>';const legend=series.map((s,i)=>'<span><i style="background:'+brandColors[s.brand.name]+'"></i>'+esc(s.brand.name)+'（最低 '+price(Math.min(...s.values.filter(Number.isFinite)))+'）</span>').join('');return '<section class="compare-block"><div class="panelhead"><h3>'+periodName[period]+'</h3><small>'+series.length+' 个产品 · '+tiers.length+' 个等级</small></div><div class="compare-bar-scroll">'+svg+'</div><div class="compare-bar-legend">'+(legend||'<span>当前筛选无可计算数据</span>')+'</div><div class="compare-bar-note">当前筛选：'+(state.purchase==='first'?'首期':'续期')+' · '+resLabel[state.res]+' · '+(state.res==='720'?(state.discount==='on'?'折扣期内':'折扣期外'):'原价')+' · '+(state.stage==='early'?'前期/加赠积分':'后续常规积分')+'</div></section>'}function renderBars(){chart.innerHTML=periods.filter(p=>state.period==='全部'||state.period===p).map(block).join('');if(!chart.innerHTML)chart.innerHTML='<div class="no-data">当前筛选无可计算数据</div>'}['period','purchase','product','resolution','stage'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>requestAnimationFrame(renderBars)));document.querySelectorAll('[data-discount]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(renderBars)));renderBars()})();
-</script>
-<script>
-(()=>{const chart=document.getElementById('chart');if(!chart)return;const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function collect(period){const prev=state.period;state.period=period;const rows=[];brands.forEach(b=>b.plans.forEach(s=>{const r=rowData(b,s);if(r)rows.push(r)}));state.period=prev;return rows}function lineSvg(period){const rows=collect(period),{tiers,series}=outputGroups(rows,period);const vals=series.flatMap(s=>s.values).filter(Number.isFinite),max=Math.max(...vals,official[state.res],0.01),w=Math.max(960,tiers.length*120+120),h=390,left=64,right=28,top=28,bottom=70,pw=w-left-right,ph=h-top-bottom,xs=tiers.map((_,i)=>tiers.length===1?left+pw/2:left+i*pw/(tiers.length-1)),y=v=>top+ph-(v/max)*ph,grid=[0,.25,.5,.75,1],refY=y(official[state.res]);let svg='<svg class="compare-svg" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(periodName[period])+'不同等级单秒价格折线图">';grid.forEach(g=>{const yy=top+ph-g*ph;svg+='<line class="compare-grid" x1="'+left+'" x2="'+(w-right)+'" y1="'+yy+'" y2="'+yy+'"/><text class="compare-axis" x="'+(left-10)+'" y="'+(yy+4)+'" text-anchor="end">'+price(max*g)+'</text>'});svg+='<line class="compare-ref" x1="'+left+'" x2="'+(w-right)+'" y1="'+refY+'" y2="'+refY+'"/><text class="compare-ref-label" x="'+(w-right)+'" y="'+Math.max(14,refY-6)+'" text-anchor="end">火山刊例 '+price(official[state.res])+'</text>';tiers.forEach((t,i)=>{svg+='<text class="compare-axis" x="'+xs[i]+'" y="'+(h-32)+'" text-anchor="middle">'+esc(t)+'</text><line class="compare-grid" x1="'+xs[i]+'" x2="'+xs[i]+'" y1="'+top+'" y2="'+(top+ph)+'"/>'});series.forEach((s,si)=>{let d='',open=false;s.values.forEach((v,i)=>{if(Number.isFinite(v)){d+=(open?'L':'M')+xs[i].toFixed(1)+' '+y(v).toFixed(1);open=true}else open=false});svg+='<path class="compare-line" stroke="'+brandColors[s.brand.name]+'" d="'+d+'"/>';s.values.forEach((v,i)=>{if(Number.isFinite(v))svg+='<circle data-unit-cost="'+v+'" class="compare-dot" fill="'+brandColors[s.brand.name]+'" cx="'+xs[i]+'" cy="'+y(v)+'" r="4"><title>'+esc(s.brand.name)+' · '+esc(periodName[period])+' · '+esc(tiers[i])+'（'+esc(s.names[i])+'）：'+price(v)+'/秒</title></circle>'})});return svg+'</svg>'}function enhance(){chart.querySelectorAll('.compare-block').forEach(block=>{if(block.dataset.toggleReady)return;const title=block.querySelector('h3')?.textContent.trim(),period=Object.keys(periodName).find(k=>periodName[k]===title);if(!period)return;const head=block.querySelector('.panelhead'),scroll=block.querySelector('.compare-bar-scroll');if(!head||!scroll)return;block.dataset.toggleReady='1';const toggle=document.createElement('div');toggle.className='view-toggle';toggle.innerHTML='<button class="active" type="button">柱状图</button><button type="button">折线图</button>';head.appendChild(toggle);const buttons=[...toggle.querySelectorAll('button')],barMarkup=scroll.innerHTML;buttons[1].addEventListener('click',()=>{scroll.innerHTML=lineSvg(period);buttons[0].classList.remove('active');buttons[1].classList.add('active')});buttons[0].addEventListener('click',()=>{scroll.innerHTML=barMarkup;buttons[0].classList.add('active');buttons[1].classList.remove('active')})})}new MutationObserver(()=>requestAnimationFrame(enhance)).observe(chart,{childList:true,subtree:true});enhance()})();
-</script>
-<script>
-const chartArea = document.getElementById('chart');
-const chartTip = document.getElementById('chart-tip');
-const tierRanges = {入门:'1–10',基础:'11–30',进阶:'31–100',高级:'101–300',旗舰:'301 条及以上'};
-function hideChartTip(){chartTip.hidden = true}
-chartArea.addEventListener('pointermove', event => {
-  const mark = event.target.closest('[data-unit-cost]');
-  const label = event.target.closest('svg text')?.textContent || '';
-  const tier = Object.keys(tierRanges).find(name => label.startsWith(name));
-  if (!mark && !tier) return hideChartTip();
-  if (mark) {
-    const cost = Number(mark.dataset.unitCost);
-    const title = mark.querySelector('title');
-    if (title) {
-      mark.dataset.caption = title.textContent.split('：')[0];
-      title.remove();
-    }
-    chartTip.textContent = mark.dataset.caption + '\n单秒价格 ' + price(cost) + '/秒　相对刊例 '+fold(cost);
-  } else {
-    const range = tierRanges[tier];
-    chartTip.textContent = label + ' · 常规月产量 ' + range + (tier === '旗舰' ? '' : ' 条');
-  }
-  chartTip.hidden = false;
-  chartTip.style.left = Math.max(4, Math.min(event.clientX+14, innerWidth-chartTip.offsetWidth-8))+'px';
-  chartTip.style.top = (event.clientY+chartTip.offsetHeight+22 < innerHeight ? event.clientY+14 : Math.max(4,event.clientY-chartTip.offsetHeight-10))+'px';
+let modelDiscount='on';
+const priceTip=$('price-tip');
+function hidePriceTip(){priceTip.hidden=true}
+function showPriceTip(message,x,y){
+ priceTip.textContent=message;
+ priceTip.hidden=false;
+ const width=priceTip.offsetWidth,height=priceTip.offsetHeight;
+ priceTip.style.left=Math.max(8,Math.min(x+12,innerWidth-width-8))+'px';
+ priceTip.style.top=Math.max(8,y+12+height<=innerHeight-8?y+12:y-height-12)+'px';
+}
+window.addEventListener('scroll',hidePriceTip,true);
+window.addEventListener('resize',hidePriceTip);
+function draw(){
+ hidePriceTip();
+ $('detail').hidden=true;
+ $('basis').textContent=$('purchase').value==='renew'?'续期按常规月积分计算。未披露续扣金额的套餐按首期同价估算。':'首期按实付和含赠时长计算。前期积分包含符合领取条件的加赠。';
+ const periods=$('period').value==='全部'?['年','季','月']:[$('period').value];
+ const visibleBrands=brands.filter(b=>$('product').value==='全部'||b.name===$('product').value);
+ const ref={720:1.51,1080:3.74,'4k':6.03}[$('resolution').value];
+ $('legend').replaceChildren();
+ visibleBrands.forEach(b=>{
+   const el=document.createElement('span');el.textContent=b.name;
+   el.style.borderBottom='3px solid '+palette[brands.indexOf(b)];$('legend').append(el);
+ });
+ const official=document.createElement('span');
+ official.textContent='火山刊例 ¥'+ref.toFixed(2)+'/秒';official.style.color='#7546b8';$('legend').append(official);
+ $('plots').replaceChildren();
+ for(const period of periods)drawPlot(period,visibleBrands,ref);
+}
+function drawPlot(period,visibleBrands,ref){
+ const tiers=[];
+ let low=1;
+ for(const high of [...bounds,Infinity]){
+   const label=high===Infinity?low+' 条及以上':low+'–'+high+' 条';
+   const groups=visibleBrands.map(b=>b.plans.filter(s=>s[0]===period).map(s=>quote(b,s)).filter(r=>r&&r.qty>=low&&r.qty<=high).sort((a,b)=>a.cost-b.cost));
+   const name=bounds.length===2?tierNames[tiers.length]:'产量 '+(tiers.length+1)+' 档';
+   tiers.push({name,label,groups});low=high+1;
+ }
+ const heading=document.createElement('h2');heading.textContent=period+'付';$('plots').append(heading);
+ if(!tiers.some(t=>t.groups.some(g=>g.length))){
+   const empty=document.createElement('p');empty.textContent='当前筛选无可比报价';$('plots').append(empty);return;
+ }
+ const scroll=document.createElement('div');scroll.className='plot-scroll';$('plots').append(scroll);
+ const plot=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ plot.setAttribute('role','group');plot.setAttribute('aria-label',period+'付各产量档位单秒价格');scroll.append(plot);
+ const width=Math.max(760,70+tiers.length*Math.max(155,visibleBrands.length*65)),base=302,step=(width-70)/tiers.length;
+ const top=Math.ceil(Math.max(ref,...tiers.flatMap(t=>t.groups.map(g=>g[0]?.cost||0)))*1.15*2)/2;
+ const y=value=>base-245*value/top;
+ plot.replaceChildren();plot.setAttribute('viewBox','0 0 '+width+' 375');plot.style.minWidth=width+'px';
+ function svg(tag,attrs,content,parent=plot){
+   const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
+   for(const [k,v] of Object.entries(attrs))node.setAttribute(k,v);
+   if(content!==undefined)node.textContent=content;parent.append(node);return node;
+ }
+ for(let i=0;i<=4;i++){
+   const v=top*i/4,yy=y(v);
+   svg('line',{x1:55,x2:width-10,y1:yy,y2:yy,stroke:'#e0e5ec'});
+   svg('text',{x:47,y:yy+5,'text-anchor':'end',fill:'#526670','font-size':13},'¥'+v.toFixed(2));
+ }
+ tiers.forEach(({name,label,groups},i)=>{
+   const start=55+step*i,slot=(step-18)/visibleBrands.length;
+   if(i>0)svg('line',{x1:start,x2:start,y1:y(top),y2:358,stroke:'#c5d0d7','stroke-width':1.25,'pointer-events':'none'});
+   svg('text',{x:start+step/2,y:329,'text-anchor':'middle','font-weight':700},name);
+   svg('text',{x:start+step/2,y:351,'text-anchor':'middle','font-size':13,fill:'#526970'},label+' / 月');
+   groups.forEach((g,j)=>{
+     if(!g.length)return;
+     const x=start+9+(j+.5)*slot,c=g[0].cost,bw=Math.min(56,slot-6);
+     const ratio=c/ref;
+     const comparison=ratio<=1?(ratio*10).toFixed(2)+' 折':ratio.toFixed(2)+' 倍';
+     const caption=visibleBrands[j].name+' · '+period+'付 · '+g[0].tier+' · '+g[0].qty+' 条/月';
+     const message=caption+'\n单秒价格 ¥'+c.toFixed(3)+'/秒\n相对火山刊例 '+comparison;
+     const node=svg('g',{class:'price-bar',tabindex:0,role:'button','aria-label':message,style:'cursor:pointer'});
+     svg('rect',{x:x-bw/2,y:y(c),width:bw,height:base-y(c),rx:3,fill:palette[brands.indexOf(visibleBrands[j])]},undefined,node);
+     svg('text',{x,y:(base+y(c))/2,'text-anchor':'middle','dominant-baseline':'central','font-weight':700,'font-size':Math.min(12,base-y(c)),fill:'#fff',stroke:'#263746','stroke-width':1.6,'paint-order':'stroke','pointer-events':'none'},visibleBrands[j].name,node);
+     const moveTip=e=>showPriceTip(message,e.clientX,e.clientY);
+     node.onpointerenter=moveTip;
+     node.onpointermove=moveTip;
+     node.onpointerleave=hidePriceTip;
+     node.onfocus=()=>{
+       const box=node.getBoundingClientRect();
+       showPriceTip(message,box.right,box.top);
+     };
+     node.onblur=hidePriceTip;
+     node.onclick=()=>{hidePriceTip();detail(visibleBrands[j].name,period+'付 · '+name+'（'+label+' / 月）',g)};
+     node.onkeydown=e=>{
+       if(e.key==='Escape')hidePriceTip();
+       if(e.key==='Enter'||e.key===' '){e.preventDefault();node.onclick()}
+     };
+   });
+ });
+ svg('line',{x1:55,x2:width-10,y1:y(ref),y2:y(ref),stroke:'#8557cc','stroke-dasharray':'5 4','pointer-events':'none'});
+}
+const discountButtons=document.querySelectorAll('[data-discount]');
+discountButtons.forEach(button=>button.onclick=()=>{
+ modelDiscount=button.dataset.discount;
+ discountButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+ draw();
 });
-chartArea.addEventListener('pointerleave',hideChartTip);
-window.addEventListener('scroll',hideChartTip,true);
-</script></body></html>
+function apply(){const v=$('cuts').value.split(/[,，]/).map(s=>Number(s.trim()));if(v.length>12||v.some((n,i)=>!Number.isSafeInteger(n)||n<1||(i&&n<=v[i-1]))){$('error').textContent=' 请输入递增的正整数，最多 12 个上限。';return}bounds=v;$('error').textContent='';draw()}
+$('apply').onclick=apply;$('cuts').onkeydown=e=>{if(e.key==='Enter')apply()};$('reset').onclick=()=>{$('cuts').value='30, 75';apply()};document.querySelectorAll('select').forEach(el=>el.onchange=draw);draw();
+</script></html>
