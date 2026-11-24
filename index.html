@@ -13,7 +13,7 @@
 .price-bar:focus-visible rect{stroke:#182d35;stroke-width:2}
 #price-tip{position:fixed;inset:auto;z-index:10;pointer-events:none;max-width:calc(100vw - 16px);padding:10px 14px;border-radius:8px;background:#182d35;color:#fff;white-space:pre-line;font-size:14px;line-height:1.5;box-shadow:0 4px 18px #182d3540}
 .switch{display:flex;gap:4px;margin-top:4px}.switch [aria-pressed="true"]{background:#e4f3ef;border-color:#238477;color:#125e53}
-.plot-scroll{overflow:auto}.plot-scroll svg{display:block;width:100%}#plots h2{font-size:17px;margin:20px 0 0}
+.plot-scroll svg{display:block;width:100%;height:auto}#plots h2{font-size:17px;margin:20px 0 0}
 </style>
 <p><small>单位：元/秒。每根柱显示该竞品在此档的最低单秒价，紫色虚线为火山刊例。点击柱体可查看同档全部套餐。</small></p><small id="basis"></small><section id="detail" hidden aria-live="polite"></section></main><script>
 const brands=[
@@ -82,21 +82,22 @@ function draw(){
  const visibleBrands=brands.filter(b=>$('product').value==='全部'||b.name===$('product').value);
  const ref={720:1.51,1080:3.74,'4k':6.03}[$('resolution').value];
  $('legend').replaceChildren();
- visibleBrands.forEach(b=>{
-   const el=document.createElement('span');el.textContent=b.name;
-   el.style.borderBottom='3px solid '+palette[brands.indexOf(b)];$('legend').append(el);
- });
  const official=document.createElement('span');
  official.textContent='火山刊例 ¥'+ref.toFixed(2)+'/秒';official.style.color='#7546b8';$('legend').append(official);
  $('plots').replaceChildren();
  for(const period of periods)drawPlot(period,visibleBrands,ref);
 }
 function drawPlot(period,visibleBrands,ref){
+ const periodQuotes=visibleBrands.map(brand=>({
+   brand,
+   quotes:brand.plans.filter(plan=>plan[0]===period).map(plan=>quote(brand,plan)).filter(Boolean)
+ })).filter(entry=>entry.quotes.length);
+ visibleBrands=periodQuotes.map(entry=>entry.brand);
  const tiers=[];
  let low=1;
  for(const high of [...bounds,Infinity]){
    const label=high===Infinity?low+' 条及以上':low+'–'+high+' 条';
-   const groups=visibleBrands.map(b=>b.plans.filter(s=>s[0]===period).map(s=>quote(b,s)).filter(r=>r&&r.qty>=low&&r.qty<=high).sort((a,b)=>a.cost-b.cost));
+   const groups=periodQuotes.map(({quotes})=>quotes.filter(r=>r.qty>=low&&r.qty<=high).sort((a,b)=>a.cost-b.cost));
    const name=bounds.length===2?tierNames[tiers.length]:'产量 '+(tiers.length+1)+' 档';
    tiers.push({name,label,groups});low=high+1;
  }
@@ -104,13 +105,20 @@ function drawPlot(period,visibleBrands,ref){
  if(!tiers.some(t=>t.groups.some(g=>g.length))){
    const empty=document.createElement('p');empty.textContent='当前筛选无可比报价';$('plots').append(empty);return;
  }
+ const top=Math.ceil(Math.max(ref,...tiers.flatMap(t=>t.groups.map(g=>g[0]?.cost||0)))*1.15*2)/2;
+ const width=Math.max(280,$('plots').clientWidth);
+ const perRow=Math.max(1,Math.floor((width-70)/Math.max(150,visibleBrands.length*55)));
+ for(let i=0;i<tiers.length;i+=perRow){
+   drawPlotRow(period,visibleBrands,ref,tiers.slice(i,i+perRow),width,top);
+ }
+}
+function drawPlotRow(period,visibleBrands,ref,tiers,width,top){
  const scroll=document.createElement('div');scroll.className='plot-scroll';$('plots').append(scroll);
  const plot=document.createElementNS('http://www.w3.org/2000/svg','svg');
  plot.setAttribute('role','group');plot.setAttribute('aria-label',period+'付各产量档位单秒价格');scroll.append(plot);
- const width=Math.max(760,70+tiers.length*Math.max(155,visibleBrands.length*65)),base=302,step=(width-70)/tiers.length;
- const top=Math.ceil(Math.max(ref,...tiers.flatMap(t=>t.groups.map(g=>g[0]?.cost||0)))*1.15*2)/2;
+ const base=302,step=(width-70)/tiers.length;
  const y=value=>base-245*value/top;
- plot.replaceChildren();plot.setAttribute('viewBox','0 0 '+width+' 375');plot.style.minWidth=width+'px';
+ plot.setAttribute('viewBox','0 0 '+width+' 375');
  function svg(tag,attrs,content,parent=plot){
    const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
    for(const [k,v] of Object.entries(attrs))node.setAttribute(k,v);
@@ -135,7 +143,7 @@ function drawPlot(period,visibleBrands,ref){
      const message=caption+'\n单秒价格 ¥'+c.toFixed(3)+'/秒\n相对火山刊例 '+comparison;
      const node=svg('g',{class:'price-bar',tabindex:0,role:'button','aria-label':message,style:'cursor:pointer'});
      svg('rect',{x:x-bw/2,y:y(c),width:bw,height:base-y(c),rx:3,fill:palette[brands.indexOf(visibleBrands[j])]},undefined,node);
-     svg('text',{x,y:(base+y(c))/2,'text-anchor':'middle','dominant-baseline':'central','font-weight':700,'font-size':Math.min(12,base-y(c)),fill:'#fff',stroke:'#263746','stroke-width':1.6,'paint-order':'stroke','pointer-events':'none'},visibleBrands[j].name,node);
+     svg('text',{x,y:(base+y(c))/2,'text-anchor':'middle','dominant-baseline':'central','font-weight':700,'font-size':Math.min(12,base-y(c),(bw-2)/4),fill:'#fff',stroke:'#263746','stroke-width':1.6,'paint-order':'stroke','pointer-events':'none'},visibleBrands[j].name,node);
      const moveTip=e=>showPriceTip(message,e.clientX,e.clientY);
      node.onpointerenter=moveTip;
      node.onpointermove=moveTip;
@@ -162,4 +170,11 @@ discountButtons.forEach(button=>button.onclick=()=>{
 });
 function apply(){const v=$('cuts').value.split(/[,，]/).map(s=>Number(s.trim()));if(v.length>12||v.some((n,i)=>!Number.isSafeInteger(n)||n<1||(i&&n<=v[i-1]))){$('error').textContent=' 请输入递增的正整数，最多 12 个上限。';return}bounds=v;$('error').textContent='';draw()}
 $('apply').onclick=apply;$('cuts').onkeydown=e=>{if(e.key==='Enter')apply()};$('reset').onclick=()=>{$('cuts').value='30, 75';apply()};document.querySelectorAll('select').forEach(el=>el.onchange=draw);draw();
+let previousPlotWidth=$('plots').clientWidth;
+new ResizeObserver(()=>{
+ const width=$('plots').clientWidth;
+ if(width===previousPlotWidth)return;
+ previousPlotWidth=width;
+ draw();
+}).observe($('plots'));
 </script></html>
